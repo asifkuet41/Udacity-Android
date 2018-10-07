@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,12 +26,15 @@ import java.awt.font.NumericShaper;
 
 public class MainActivity extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.sherlock);
 
         TextView numbers = (TextView) findViewById(R.id.numbers);
         TextView colors = (TextView)findViewById(R.id.colors);
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent numbersIntent = new Intent(MainActivity.this,NumbersActivity.class);
                 startActivity(numbersIntent);
+
             }
         });
         colors.setOnClickListener(new View.OnClickListener() {

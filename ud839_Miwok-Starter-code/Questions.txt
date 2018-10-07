@@ -1,1 +1,5 @@
 L1. Intent - explicit and implicit , OnClickListener vs onClick
+
+L2. ListView and ArrayAdapter
+
+L5. Factory Method, AdapterView
