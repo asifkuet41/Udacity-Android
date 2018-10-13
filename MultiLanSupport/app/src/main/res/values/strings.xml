@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MultiLanSupport</string>
+    <string name="welcome">Welcome</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Login</string>
+    <string name="sign_up">Do you have account? Sign Up</string>
+    <string name="changeLan">Change Language</string>
+    <string name="access_token">pk.eyJ1IjoiYXNpZjJrMTMiLCJhIjoiY2psbHVzZm53MTFpODN3b2F1ZDlxNG0xNyJ9.JQ86gm9sgNq_P4_GW53XOQ</string>
+</resources>

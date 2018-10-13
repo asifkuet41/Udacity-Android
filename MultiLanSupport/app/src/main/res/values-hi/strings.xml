@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MultiLanSupport</string>
+    <string name="welcome">स्वागत हे</string>
+    <string name="email">ईमेल</string>
+    <string name="password">पारण शब्द</string>
+    <string name="log_in">लॉग इन करें</string>
+    <string name="sign_up">আপনার কি অ্যাকাউন্ট আছে? নিবন্ধন করুন</string>
+    <string name="changeLan">भाषा बदलो</string>
+</resources>
