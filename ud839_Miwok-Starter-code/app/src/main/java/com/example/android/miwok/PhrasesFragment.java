@@ -1,18 +1,25 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PhrasesActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PhrasesFragment extends Fragment {
+
 
     MediaPlayer mediaPlayer;
 
@@ -40,12 +47,17 @@ public class PhrasesActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
 
-        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+      View rootView = inflater.inflate(R.layout.word_list,container,false);
+
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> words = new ArrayList<>();
         words.add(new Word("Where are you going?", "minto wuksus",R.raw.phrase_where_are_you_going));
@@ -60,8 +72,8 @@ public class PhrasesActivity extends AppCompatActivity {
         words.add(new Word("Come here.", "әnni'nem",R.raw.phrase_come_here));
 
 
-        WordAdapter adapter = new WordAdapter(this, words,R.color.category_phrases);
-        ListView listView = (ListView) findViewById(R.id.list);
+        WordAdapter adapter = new WordAdapter(getActivity(), words,R.color.category_phrases);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,18 +86,18 @@ public class PhrasesActivity extends AppCompatActivity {
 
                 if(result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
 
-                    mediaPlayer = MediaPlayer.create(PhrasesActivity.this,word.getAudioResourceId());
+                    mediaPlayer = MediaPlayer.create(getActivity(),word.getAudioResourceId());
                     mediaPlayer.start();
                     mediaPlayer.setOnCompletionListener(mOnCompletionListener);
                 }
 
             }
         });
-
+      return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
